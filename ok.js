@@ -1,47 +1,99 @@
 
-//sep//
-let rock ='rock';
-let scissors ='scissors';
-let paper='paper';
-let playerSelection ='you are the winner';
-let computerSelection ='you are the winner';
-//sep//
 
-function getComputerChoice(rock,paper,scissors) {
-    let result=Math.floor(Math.random()*100) ;//decides random number
-    if (result>=0 && result<=49) {
-          return rock;
-           
-         } 
-         
-        else if(result>=50 && result<=74){ 
-             return scissors;
-        
-        }
-      else if(result>=75 && result<=90 ){
-       return paper;
-       }
-   }
+let rock = "rock"
+let paper = "paper";
+let scissors = "scissors";
+let computerSelection;
+let playerSelection;
+let playerScore;
+let computerScore;
+let playerWins;
+let computerWins;
 
-function roundOne(playerSelection, computerSelection) {
-   if ( playerSelection===true && rock===true && paper===true) {
-      'you win rock beats paper'
-      
-   }
-else if(computerSelection===true && rock===true && paper===true){ 'you win rock beats paper'}
+playerScore=0;
 
-else if(computerSelection===true&& rock===true && scissors===true){'you lose rock beats scissors'}
+computerScore=0;
 
-else if(computerSelection===true && paper===true && scissors===true){'you lose scissors beats paper'}
+ playerWins = false; // Initialize playerWins to false
+  lcomputerWins = false; // Initialize computerWins to false
+
+const divAre= document.getElementById('containerDiv')
+
+const playerScoreDisplay= document.getElementById('player-score')
+const compScoreDisplay=document.getElementById('computer-score')
 
 
-   else if (playerSelection===true && rock===true && scissors===true)
-   { 'you lose scissors beats rock'}
 
-    else if ( playerSelection===true && paper===true && scissors===true){
-'you lose scissors beats paper'
+
+
+function numGen() {
+  let randoNum = Math.floor(Math.random() * 100);
+  return randoNum;
+}
+
+let getComputerChoice = function (rock, paper, scissors, numGen) {
+  let result = numGen();
+  if (result > 20 && result < 45) {
+    return paper;
+  } else if (result > 75 && result <= 80) {
+    return scissors;
+  } else {
+    return rock;
+  }
+}
+
+function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase()
+ //DOM METHOD
+  computerSelection = getComputerChoice(rock, paper, scissors, numGen);
+ //DOM METHOD
+ 
+
+
+ 
+ //I AM MISSING SOME OF THE POSSIBLE ROCK PAPER SCISSORS OUTCOMES
+ 
+
+  if (playerSelection === rock && computerSelection === paper) {
+    divAre.textContent='You lose, paper beats rock';  
+    computerWins=true//append
+  } else if (playerSelection === paper && computerSelection === rock) {
+    divAre.textContent='You win, paper beats rock';  
+      playerWins=true//append  
+  } else if (playerSelection === rock && computerSelection === scissors) {
+    divAre.textContent='You win, rock beats scissors'; 
+    playerWins=true
+    playerWins//append
+  } else if (playerSelection === scissors && computerSelection === rock) {
+    divAre.textContent='You lose, rock beats scissors'; 
+    computerWins=true//append
+  } else if (playerSelection === scissors && computerSelection === paper) {
+    divAre.textContent='You win, scissors beats paper';
+    playerWins=true //append
+  } else if (playerSelection === paper && computerSelection === scissors) {
+    divAre.textContent='You lose, scissors beats paper';
+    computerWins=true//append
+  } else {
+    divAre.textContent='Tie'
+    playRound(computerSelection, playerSelection); //put on timer later
+    
+  }
+    
+    if (playerWins) {
+      playerScore++;
+    } else if (computerWins) {
+      computerScore++;
     }
-   else{'you tied try again'}
-   }
+    
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    compScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+}
+ 
+ 
+const rck = document.getElementById('rck')  //rock button
+const ppr= document.getElementById('ppr') //paper button
+const scsr= document.getElementById('ssc') ;//scissors button 
 
-roundOne(getComputerChoice)
+rck.addEventListener('click', e => playRound(playerSelection,computerSelection))
+ppr.addEventListener('click', e => playRound(playerSelection,computerSelection))
+scsr.addEventListener('click',e => playRound(playerSelection,computerSelection))

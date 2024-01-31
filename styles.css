@@ -3,8 +3,24 @@
 *{font-family: sans-serif;}
 
 button{ border-radius: 5px;
-background-color: gold;
-    color: blue;
+font-size: large;
+background-color: darkseagreen;
+    color: whitesmoke;
+}
 
+h1{color: rgb(48, 213, 216);
+
+    text-shadow: 2px 2px 2px black;
 
 }
+body{ background-image: url(imgs/1920x1080-1093948-hamster.jpg);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background-attachment: fixed;
+}
+
+.btncontainer{  justify-self: center;
+
+}
+/* code in an image gallery later */

@@ -11,11 +11,12 @@ let playerWins;
 let computerWins;
 
 playerScore=0;
-
 computerScore=0;
 
- playerWins = false; // Initialize playerWins to false
-  lcomputerWins = false; // Initialize computerWins to false
+playerWins=false
+computerWins=false
+
+// Initialize computerWins to false
 
 const divAre= document.getElementById('containerDiv')
 
@@ -43,7 +44,7 @@ let getComputerChoice = function (rock, paper, scissors, numGen) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase()
+
  //DOM METHOD
   computerSelection = getComputerChoice(rock, paper, scissors, numGen);
  //DOM METHOD
@@ -57,25 +58,33 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === rock && computerSelection === paper) {
     divAre.textContent='You lose, paper beats rock';  
     computerWins=true//append
+  playerWins=false
   } else if (playerSelection === paper && computerSelection === rock) {
     divAre.textContent='You win, paper beats rock';  
-      playerWins=true//append  
+      playerWins=true
+      computerWins=false//append  
   } else if (playerSelection === rock && computerSelection === scissors) {
     divAre.textContent='You win, rock beats scissors'; 
     playerWins=true
-    playerWins//append
+     computerWins=false//append
   } else if (playerSelection === scissors && computerSelection === rock) {
     divAre.textContent='You lose, rock beats scissors'; 
-    computerWins=true//append
+    computerWins=true
+    playerWins=false//append
   } else if (playerSelection === scissors && computerSelection === paper) {
     divAre.textContent='You win, scissors beats paper';
-    playerWins=true //append
+    playerWins=true 
+    computerWins=false//append
   } else if (playerSelection === paper && computerSelection === scissors) {
     divAre.textContent='You lose, scissors beats paper';
-    computerWins=true//append
+    computerWins=true
+    playerWins=false
+    //append
   } else {
     divAre.textContent='Tie'
-    playRound(computerSelection, playerSelection); //put on timer later
+    playerWins=false
+    computerWins=false
+ 
     
   }
     
@@ -87,6 +96,9 @@ function playRound(playerSelection, computerSelection) {
     
     playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
     compScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+
+    if(playerScore===3){divAre.textContent='YOU WIN!'}
+    else if(computerScore===3){divAre.textContent='YOU LOSE'}
 }
  
  
@@ -94,6 +106,7 @@ const rck = document.getElementById('rck')  //rock button
 const ppr= document.getElementById('ppr') //paper button
 const scsr= document.getElementById('ssc') ;//scissors button 
 
-rck.addEventListener('click', e => playRound(playerSelection,computerSelection))
-ppr.addEventListener('click', e => playRound(playerSelection,computerSelection))
-scsr.addEventListener('click',e => playRound(playerSelection,computerSelection))
+rck.addEventListener('click', e => playRound('rock',computerSelection))
+ppr.addEventListener('click', e => playRound('paper',computerSelection))
+scsr.addEventListener('click',e => playRound('scissors',computerSelection))
+

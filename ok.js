@@ -71,7 +71,7 @@
 
 
 
-
+//update this branch and merge with UI branch
 
 let rock = "rock"
 let paper = "paper";
@@ -104,24 +104,27 @@ console.log(playerSelection)
 
 
 
-  if (playerSelection === rock && computerSelection === paper) {
+  if (playerSelection === rock && computerSelection === paper) { //RP//
     console.log('You lose, paper beats rock');
-  } else if (playerSelection === paper && computerSelection === rock) {
+  } else if (playerSelection === paper && computerSelection === rock) { //PR//
     console.log('You win, paper beats rock');
-  } else if (playerSelection === rock && computerSelection === scissors) {
+  } else if (playerSelection === rock && computerSelection === scissors) { //RS//
     console.log('You win, rock beats scissors');
-  } else if (playerSelection === scissors && computerSelection === rock) {
+  } else if (playerSelection === scissors && computerSelection === rock) { //SR//
     console.log('You lose, rock beats scissors');
-  } else if (playerSelection === scissors && computerSelection === paper) {
+  } else if (playerSelection === scissors && computerSelection === paper) { //SP
     console.log('You win, scissors beats paper');
-  } else if (playerSelection === paper && computerSelection === scissors) {
+  } else if (playerSelection === paper && computerSelection === scissors) { //PS//
     console.log('You lose, scissors beats paper');
   } else {
-    roundOne(computerSelection, playerSelection);
+    roundOne(computerSelection, playerSelection); 
   }
 }
 
 const rck = document.getElementById('rock')  //rock button
 const ppr= document.getElementById('paper') //paper button
 const scsr= document.getElementById('scissors') //scissors button 
+
+const themeBTN= document.getElementById('themebtn')
+const body=document.querySelector('body')
 

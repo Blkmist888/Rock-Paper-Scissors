@@ -1,6 +1,9 @@
 
 
-*{font-family: sans-serif;}
+*{font-family: sans-serif;
+font-variant: small-caps;
+font-weight: bolder;
+font-size: larger;}
 
 button{ border-radius: 5px;
 font-size: large;
@@ -9,9 +12,8 @@ background-color: darkseagreen;
 }
 
 h1{color: rgb(48, 213, 216);
-
     text-shadow: 2px 2px 2px black;
-
+  font-style: normal;
 }
 body{ background-image: url(imgs/1920x1080-1093948-hamster.jpg);
 background-repeat: no-repeat;
